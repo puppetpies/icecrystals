@@ -12,12 +12,14 @@ crystal build --release icecrystals.cr -o outputpath/icecrystals
 
 ./icecrystals -f myfile
 
+````
 Usage: icecrystals [options]
     -f INTPUTFILE, --inputfile=INPUTFILEInput filename
     -k keywords.ice, --keywordsfile=KEYWORDSFILEKeywords / Syntax Hightlighting
     -g STRING, --grep=STRING         Filter string
     -t, --nohighlighter              Turn off highlighter
     -h, --help                       Show this help
+````
 
 ## Development
 
@@ -38,5 +40,5 @@ syntax highlighting
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/puppetpies) Bri in The Sky - creator, maintainer
+- [puppetpies]](https://github.com/puppetpies) Bri in The Sky - creator, maintainer
 # icecrystals

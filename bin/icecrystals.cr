@@ -49,7 +49,7 @@ is_debug = false
 
 def print_stamp
   puts "Author: Brian Hood"
-  puts "Homepage: https://github.com/puppetpies/icecrystal"
+  puts "Homepage: https://github.com/puppetpies/icecrystals"
 end
 
 def option_nameval(var, text)
@@ -57,7 +57,7 @@ def option_nameval(var, text)
 end
 
 OptionParser.parse! do |parser|
-  parser.banner = "Usage: icersplicer [options]"
+  parser.banner = "Usage: icecrystals [options]"
 
   parser.on("-f INTPUTFILE", "--inputfile=INPUTFILE", "Input filename") {|f|
     inputfile = f

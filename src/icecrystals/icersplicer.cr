@@ -16,7 +16,7 @@ module Icersplicer
 
     def initialize
       @fileopen = 0
-      @debug = 2
+      @debug = 0
     end
     
     def open(outputfile)

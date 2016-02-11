@@ -23,12 +23,14 @@ Usage: icecrystals [options]
 
 ## Development
 
+````
 TODO: Implement Icersplicer common functions.
 
 head / tail
 lineoffsets
 skipblank
 syntax highlighting
+````
 
 ## Contributing
 
@@ -41,4 +43,5 @@ syntax highlighting
 ## Contributors
 
 - [puppetpies]](https://github.com/puppetpies) Bri in The Sky - creator, maintainer
+
 # icecrystals

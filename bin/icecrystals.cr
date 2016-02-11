@@ -1,13 +1,12 @@
 ########################################################################
 #
 # Author: Brian Hood
-# Name: Icersplicer
+# Name: Icecrystals
 # Email: brianh6854@googlemail.com
-# Github: https://github.com/puppetpies/icersplicer
+# Github: https://github.com/puppetpies/icecrystals
 #
 # Description: 
-#   Tool for file manipulation similar to UNIX tools
-#   like cat / head / tail
+#  Optimized version of icersplicer in Crystal
 #
 # Why: for processing large datasets quickly.
 #
@@ -15,11 +14,8 @@
 #
 ########################################################################
 
-require "env"
-require "../lib/getoptlong"
-require "../lib/globutils"
-require "../lib/icersplicer"
-require "../lib/version" 
+require "option_parser"
+require "../src/icecrystals"
          
 include GlobUtils 
 include Icersplicer
@@ -48,8 +44,6 @@ inputfile = ""
 outputfile = "DISABLED"
 filenames = ""
 search_and_replace = false
-
-require "../lib/option_parser"
 
 is_debug = false
 
@@ -129,7 +123,7 @@ filterlines = 0
                   unless skipblank #and data_orig.strip  == ""
                     if data_orig =~ /#{grep}/
                       filterlines += 1
-                      ice.print_to_screen(linecounter, ice.text_processor(data), quietmode)
+                      ice.print_to_screen(linecounter, data, quietmode)
                       unless outputfile == "DISABLED"
                         #data_orig.gsub!("#{search}", "#{replace}")
                         #output.processdata(data_orig, outputfile, quietmode)
@@ -141,7 +135,7 @@ filterlines = 0
                 unless skipblank # and data_orig.strip == ""
                   if data_orig =~ /#{grep}/
                     filterlines += 1
-                    ice.print_to_screen(linecounter, ice.text_processor(data), quietmode)
+                    ice.print_to_screen(linecounter, data, quietmode)
                     unless outputfile == "DISABLED"
                       #data_orig.gsub!("#{search}", "#{replace}")
                       #output.processdata(data_orig, outputfile, quietmode)

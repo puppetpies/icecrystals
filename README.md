@@ -1,6 +1,6 @@
 # icecrystals - Alpha / Experimental code
 
-Icecrystals - Icersplicer written Crystal for performance benefits of compiled code.
+Icecrystals - Icersplicer written in Crystal for performance benefits of compiled code.
 
 ## Installation
 

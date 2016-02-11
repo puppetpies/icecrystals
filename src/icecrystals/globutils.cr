@@ -3,7 +3,7 @@ module GlobUtils
 
   FILE_EXT_REGEXP = /\/*.([a-z]|[A-Z])+$/
   FILE_WILDCARD_REGEXP = /\*.([a-z]|[A-Z])+$/
-  @@debug = 1
+  @@debug = 0
 
   def glob(f)
     puts "String end: #{f[f.size - 1]}" if @@debug == 1

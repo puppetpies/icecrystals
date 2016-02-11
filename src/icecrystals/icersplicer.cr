@@ -70,11 +70,49 @@ module Icersplicer
       @keywordsfile = "keywords.ice"
       @debug = 2
       @nolinenumbers = false
-      @skip_lines = Array(Int32).new
+      @skip_lines = Hash(Int32, Int32).new
       @keys = Hash(Int32, String).new
       @home = ""
     end
-    
+
+    def skip_processor(filter)
+      skip_lines = Hash(Int32, Int32).new
+      skipcounter, comb = 0, 0
+      puts "Filter: #{filter}"
+      filter.to_s.split(",").each {|n|
+        if n.split("-").size == 2
+          min = n.split("-")[0].to_i
+          max = n.split("-")[1].to_i
+          min.upto(max) {|u|
+            skip_lines.merge!({comb => u.to_i})
+            comb = comb + 1
+            puts "Comb: #{comb} U: #{u.to_i}" if @debug == 3
+          }
+        else
+          skip_lines.merge!({comb => n.to_i})
+          comb = comb + 1
+          puts "Comb: #{comb} U: #{n.to_i}" if @debug == 3
+        end
+      }
+      return skip_lines
+    end
+  
+    def skip(line)
+      begin
+        line_element = @skip_lines.key(line)
+        puts "Line Element: #{line_element}" if @debug == 3
+        if line_element != nil
+          skiper = true
+          return true
+        else
+          skiper = nil
+        end
+      rescue KeyError
+        puts "Invalid Hash Key" if @debug == 3
+      end
+      return skiper
+    end
+
     def reset_screen
       puts "\e[0m\ "
     end
@@ -143,7 +181,7 @@ module Icersplicer
     def countlines(inputfile)
       lines = 0
       unless inputfile == nil
-        if File.exist?(inputfile)
+        if File.exists?(inputfile)
           File.open(inputfile) {|n|
             n.each_line {
               lines += 1

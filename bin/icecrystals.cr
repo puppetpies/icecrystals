@@ -55,7 +55,7 @@ end
 def option_nameval(var, text)
   puts "#{var}: #{text}"
 end
-
+      
 OptionParser.parse! do |parser|
   parser.banner = "Usage: icecrystals [options]"
 
@@ -74,6 +74,22 @@ OptionParser.parse! do |parser|
     option_nameval("Grep", g)
   }
 
+  parser.on("-3 INT", "--head=INT", "From beginning of file number of lines display able") {|l|
+    linelimit = l.to_i
+    option_nameval("Head / Line Limit", l)
+  }
+
+  parser.on("-4 INT", "--tail=INT", "lines display able at the end of the file") {|l|
+    count = ice.countlines(inputfile)
+    lineoffset = count - l.to_i
+    option_nameval("Tail / Line Limit", l)
+  }
+
+  parser.on("-s INT", "--skiplines=INT", "Line numbers / sequences") {|s|
+    ice.skip_lines = ice.skip_processor(s)
+    option_nameval("Skiplines", s)
+  }
+  
   parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
     ice.nohighlighter = "OFF"
   }
@@ -123,7 +139,7 @@ filterlines = 0
                   unless skipblank #and data_orig.strip  == ""
                     if data_orig =~ /#{grep}/
                       filterlines += 1
-                      ice.print_to_screen(linecounter, data, quietmode)
+                      ice.print_to_screen(linecounter, data, quietmode) unless ice.skip(linecounter)
                       unless outputfile == "DISABLED"
                         #data_orig.gsub!("#{search}", "#{replace}")
                         #output.processdata(data_orig, outputfile, quietmode)
@@ -135,7 +151,7 @@ filterlines = 0
                 unless skipblank # and data_orig.strip == ""
                   if data_orig =~ /#{grep}/
                     filterlines += 1
-                    ice.print_to_screen(linecounter, data, quietmode)
+                    ice.print_to_screen(linecounter, data, quietmode) unless ice.skip(linecounter)
                     unless outputfile == "DISABLED"
                       #data_orig.gsub!("#{search}", "#{replace}")
                       #output.processdata(data_orig, outputfile, quietmode)

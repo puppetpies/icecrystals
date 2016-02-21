@@ -1,4 +1,4 @@
-# icecrystals - Alpha / Experimental code
+# icecrystals - Experimental
 
 Icecrystals - Icersplicer written in Crystal for performance benefits of compiled code.
 

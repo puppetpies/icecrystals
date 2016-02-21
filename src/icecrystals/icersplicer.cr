@@ -14,36 +14,22 @@ module Icersplicer
 
   class OutputFile
 
+    setter outputfilename
+    
     def initialize
-      @fileopen = 0
       @debug = 0
+      @outputfilename = ""
     end
     
-    def open(outputfile)
+    def write(data)
       begin
-        puts "Openfile: #{outputfile}" if @debug >= 1
-        @export = File.open("#{outputfile}", "w")
+        puts "Openfile: #{@outputfilename}" if @debug >= 1
+        File.open("#{@outputfilename}", "a") {|n|
+          n.print(data)
+        }
       rescue 
         raise "Can't create file please check file / directory permissions"
-      end
-    end
-
-    def write(data)
-      @export.write(data)
-    end
-
-    def close
-      begin
-        @export.close
-        puts "Closing file"
-      rescue NoMethodError
-      end
-    end
-
-    def processdata(data, outputfile, quietmode)
-      open(outputfile) if @@fileopen == 0
-      write(data)
-      @fileopen += 1
+      end 
     end
     
   end
@@ -68,7 +54,7 @@ module Icersplicer
 
     def initialize
       @keywordsfile = "keywords.ice"
-      @debug = 2
+      @debug = 0
       @nolinenumbers = false
       @skip_lines = Hash(Int32, Int32).new
       @keys = Hash(Int32, String).new
@@ -131,7 +117,7 @@ module Icersplicer
         File.open("#{@home}/#{@keywordsfile}") {|n|
           n.each_line {|l|
             keys.merge({linenum => "#{l.strip}"}) unless l.strip == ""
-            puts "L: #{l.strip}" if @debug >= 1
+            puts "L: #{l.strip}" if @debug == 2
             linenum = linenum + 1
           }
         }
@@ -168,9 +154,9 @@ module Icersplicer
         if x.split("##")[1] == nil
           text.gsub!("#{x}", "\e[4;3#{cpicker[rand(cpicker.size)]}m#{x}\e[0m\ \e[0;32m")
         else
-          name = x.split("##")[1].split("=")[1]; puts "Name: #{name}" if @debug >= 3
-          cnum = COLOURS[name].to_i; puts "Colour Number: #{cnum}" if @debug >= 3
-          nval = x.split("##")[0]; puts "Value: #{nval}" if @debug >= 3
+          name = x.split("##")[1].split("=")[1]; puts "Name: #{name}" if @debug == 3
+          cnum = COLOURS[name].to_i; puts "Colour Number: #{cnum}" if @debug == 3
+          nval = x.split("##")[0]; puts "Value: #{nval}" if @debug == 3
           text.gsub!("#{nval}", "\e[4;3#{cnum}m#{nval}\e[0m\ \e[0;32m")
         end
         text.gsub!(" \e[0;32m", "\e[0;32m")

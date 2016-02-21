@@ -2,6 +2,8 @@
 
 Icecrystals - Icersplicer written in Crystal for performance benefits of compiled code.
 
+There is a more extensive Ruby version @ http://github.com/puppetpies/icersplicer
+
 ## Installation
 
 You can build icecrystals with

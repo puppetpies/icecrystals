@@ -15,8 +15,6 @@ make install
 
 ## Usage
 
-./icecrystals -f myfile
-
 ````
 Usage: icecrystals [options]
     -f INTPUTFILE, --inputfile=INPUTFILEInput filename

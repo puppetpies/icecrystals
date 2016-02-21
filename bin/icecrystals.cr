@@ -89,9 +89,9 @@ OptionParser.parse! do |parser|
     option_nameval("Skiplines", s)
   }
   
-  parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
-    ice.nohighlighter = "OFF"
-  }
+#  parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
+#    ice.nohighlighter = "OFF"
+#  }
 
   parser.on("-o OUTPUTFILE", "--outputfile", "Outputfile") {|o|
     outputfilename = o

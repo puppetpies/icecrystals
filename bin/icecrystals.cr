@@ -25,11 +25,8 @@ puts "Home: #{home}"
 file = "keywords.ice"
 VERSION = Icersplicer::VERSION::STRING
 
-
 ice = FileProcessor.new
 ice.home = home
-
-output = Icersplicer::OutputFile.new
 
 lineoffset = 0
 linelimit = 0
@@ -41,11 +38,13 @@ skipblank = false
 grep = "" # Blank as default
 
 inputfile = ""
-outputfile = "DISABLED"
+outputfilename = "DISABLED"
 filenames = ""
 search_and_replace = false
 
 is_debug = false
+
+ARGV[0] = "-h" if ARGV[0] == nil
 
 def print_stamp
   puts "Author: Brian Hood"
@@ -93,7 +92,15 @@ OptionParser.parse! do |parser|
   parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
     ice.nohighlighter = "OFF"
   }
-  
+
+  parser.on("-o OUTPUTFILE", "--outputfile", "Outputfile") {|o|
+    outputfilename = o
+  }
+
+  parser.on("-q", "--quiet", "Quiet") {|q|
+    quietmode = true
+  }
+
   parser.on("-h", "--help", "Show this help") {|h|
     puts parser
     puts
@@ -103,9 +110,6 @@ OptionParser.parse! do |parser|
 
 end
 ice.first_load
-
-pp inputfile
-pp grep
 
 inputfile.split(",").each {|f|
   unless f =~ FILE_EXT_REGEXP
@@ -140,9 +144,11 @@ filterlines = 0
                     if data_orig =~ /#{grep}/
                       filterlines += 1
                       ice.print_to_screen(linecounter, data, quietmode) unless ice.skip(linecounter)
-                      unless outputfile == "DISABLED"
+                      unless outputfilename == "DISABLED"
                         #data_orig.gsub!("#{search}", "#{replace}")
-                        #output.processdata(data_orig, outputfile, quietmode)
+                        output = Icersplicer::OutputFile.new
+                        output.outputfilename = outputfilename
+                        output.write(data_orig) unless ice.skip(linecounter)
                       end
                     end
                   end
@@ -152,9 +158,11 @@ filterlines = 0
                   if data_orig =~ /#{grep}/
                     filterlines += 1
                     ice.print_to_screen(linecounter, data, quietmode) unless ice.skip(linecounter)
-                    unless outputfile == "DISABLED"
+                    unless outputfilename == "DISABLED"
                       #data_orig.gsub!("#{search}", "#{replace}")
-                      #output.processdata(data_orig, outputfile, quietmode)
+                      output = Icersplicer::OutputFile.new
+                      output.outputfilename = outputfilename
+                      output.write(data_orig) unless ice.skip(linecounter)
                     end
                   end
                 end

@@ -6,8 +6,10 @@ Icecrystals - Icersplicer written in Crystal for performance benefits of compile
 
 You can build icecrystals with
 
+````
 make
 make install
+````
 
 ## Usage
 

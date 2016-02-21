@@ -6,7 +6,8 @@ Icecrystals - Icersplicer written in Crystal for performance benefits of compile
 
 You can build icecrystals with
 
-crystal build --release icecrystals.cr -o outputpath/icecrystals
+make
+make install
 
 ## Usage
 
@@ -15,10 +16,17 @@ crystal build --release icecrystals.cr -o outputpath/icecrystals
 ````
 Usage: icecrystals [options]
     -f INTPUTFILE, --inputfile=INPUTFILEInput filename
-    -k keywords.ice, --keywordsfile=KEYWORDSFILEKeywords / Syntax Hightlighting
     -g STRING, --grep=STRING         Filter string
-    -t, --nohighlighter              Turn off highlighter
+    -3 INT, --head=INT               From beginning of file number of lines display able
+    -4 INT, --tail=INT               lines display able at the end of the file
+    -s INT, --skiplines=INT          Line numbers / sequences
+    -o OUTPUTFILE, --outputfile      Outputfile
+    -q, --quiet                      Quiet
     -h, --help                       Show this help
+
+Author: Brian Hood
+Homepage: https://github.com/puppetpies/icecrystals
+
 ````
 
 ## Development
@@ -26,7 +34,6 @@ Usage: icecrystals [options]
 ````
 TODO: Implement Icersplicer common functions.
 
-head / tail
 lineoffsets
 skipblank
 syntax highlighting

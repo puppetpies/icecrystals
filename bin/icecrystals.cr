@@ -54,7 +54,7 @@ end
 def option_nameval(var, text)
   puts "#{var}: #{text}"
 end
-      
+
 OptionParser.parse! do |parser|
   parser.banner = "Usage: icecrystals [options]"
 
@@ -84,7 +84,7 @@ OptionParser.parse! do |parser|
     option_nameval("Tail / Line Limit", l)
   }
 
-  parser.on("-s INT", "--skiplines=INT", "Line numbers / sequences") {|s|
+  parser.on("-s INT", "--skiplines=INT", "Line numbers / sequences 3,4,5-10,12") {|s|
     ice.skip_lines = ice.skip_processor(s)
     option_nameval("Skiplines", s)
   }

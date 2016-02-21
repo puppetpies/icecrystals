@@ -63,10 +63,10 @@ OptionParser.parse! do |parser|
     option_nameval("Filename", f)
   }
 
-  parser.on("-k keywords.ice", "--keywordsfile=KEYWORDSFILE", "Keywords / Syntax Hightlighting") {|k|
-    ice.keywordsfile = k
-    option_nameval("Keywords", k)
-  }
+#  parser.on("-k keywords.ice", "--keywordsfile=KEYWORDSFILE", "Keywords / Syntax Hightlighting") {|k|
+#    ice.keywordsfile = k
+#    option_nameval("Keywords", k)
+#  }
   
   parser.on("-g STRING", "--grep=STRING", "Filter string") {|g|
     grep = g

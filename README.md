@@ -6,6 +6,8 @@ There is a more extensive Ruby version @ http://github.com/puppetpies/icersplice
 
 ## Installation
 
+You need Crystal 0.11 / 0.12 installed
+
 You can build icecrystals with
 
 ````

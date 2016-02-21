@@ -23,7 +23,7 @@ Usage: icecrystals [options]
     -g STRING, --grep=STRING         Filter string
     -3 INT, --head=INT               From beginning of file number of lines display able
     -4 INT, --tail=INT               lines display able at the end of the file
-    -s INT, --skiplines=INT          Line numbers / sequences
+    -s INT, --skiplines=INT          Line numbers / sequences 3,4,5-10,12
     -o OUTPUTFILE, --outputfile      Outputfile
     -q, --quiet                      Quiet
     -h, --help                       Show this help

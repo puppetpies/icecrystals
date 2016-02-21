@@ -111,14 +111,14 @@ OptionParser.parse! do |parser|
 end
 ice.first_load
 
-inputfile.split(",").each {|f|
-  unless f =~ FILE_EXT_REGEXP
-    unless File.exists?("#{f}")
-      raise "Input filename #{f} / location doesn't exist... ?"
+#inputfile.split(",").each {|f|
+#  unless f =~ FILE_EXT_REGEXP
+    unless File.exists?("#{inputfile}")
+      raise "Input filename #{inputfile} / location doesn't exist... ?"
       exit
     end
-  end
-}
+#  end
+#}
 
 filterlines = 0
 #begin

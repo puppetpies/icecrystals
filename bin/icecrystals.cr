@@ -16,7 +16,7 @@
 
 require "option_parser"
 require "../src/icecrystals"
-         
+
 include GlobUtils 
 include Icersplicer
 
@@ -44,8 +44,6 @@ search_and_replace = false
 
 is_debug = false
 
-ARGV[0] = "-h" if ARGV[0] == nil
-
 def print_stamp
   puts "Author: Brian Hood"
   puts "Homepage: https://github.com/puppetpies/icecrystals"
@@ -55,7 +53,7 @@ def option_nameval(var, text)
   puts "#{var}: #{text}"
 end
 
-OptionParser.parse! do |parser|
+oparse = OptionParser.parse! do |parser|
   parser.banner = "Usage: icecrystals [options]"
 
   parser.on("-f INTPUTFILE", "--inputfile=INPUTFILE", "Input filename") {|f|
@@ -108,6 +106,11 @@ OptionParser.parse! do |parser|
     exit 0
   }
 
+end
+oparse.parse!
+if inputfile == ""
+  puts "Please specify an inputfile with -f"
+  exit
 end
 ice.first_load
 

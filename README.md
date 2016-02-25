@@ -39,7 +39,6 @@ Homepage: https://github.com/puppetpies/icecrystals
 ````
 TODO: Implement Icersplicer common functions.
 
-lineoffsets
 skipblank
 syntax highlighting
 ````

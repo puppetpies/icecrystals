@@ -1,6 +1,11 @@
 name: icecrystals
 version: 0.1.0
 
+#dependencies:
+#  commander:
+#    github: meskyanichi/commander
+#    version: ~> 0.3.0
+
 authors:
   - Bri in The Sky <brianh6854@googlemail.com>
 

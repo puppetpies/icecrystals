@@ -56,7 +56,7 @@ end
 oparse = OptionParser.parse! do |parser|
   parser.banner = "Usage: icecrystals [options]"
 
-  parser.on("-f INTPUTFILE", "--inputfile=INPUTFILE", "Input filename") {|f|
+  parser.on("-f INTPUTFILE", "--inputfile=INPUTFILE", "\tInput filename") {|f|
     inputfile = f
     option_nameval("Filename", f)
   }
@@ -69,6 +69,10 @@ oparse = OptionParser.parse! do |parser|
   parser.on("-g STRING", "--grep=STRING", "Filter string") {|g|
     grep = g
     option_nameval("Grep", g)
+  }
+  
+  parser.on("-l INT", "--lineoffset=INT", "Offset from the beginning of the file") {|l|
+    lineoffset = l.to_i
   }
 
   parser.on("-3 INT", "--head=INT", "From beginning of file number of lines display able") {|l|

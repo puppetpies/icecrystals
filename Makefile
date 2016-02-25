@@ -5,7 +5,7 @@ icecrystals:
 	@du -sh bin/icecrystals
 
 clean:
-	rm -rf .crystal icecrystals .deps .shards libs
+	rm -f bin/icecrystals
 
 PREFIX ?= /usr/local
 

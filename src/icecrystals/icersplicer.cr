@@ -113,17 +113,20 @@ module Icersplicer
       unless Dir.exists?("#{@home}")
         Dir.mkdir("#{@home}")
       end
-      if File.exists?("#{@home}")
+      if File.exists?("#{@home}/#{@keywordsfile}")
+        puts "File Exists" if @debug >= 2
         File.open("#{@home}/#{@keywordsfile}") {|n|
           n.each_line {|l|
-            keys.merge({linenum => "#{l.strip}"}) unless l.strip == ""
-            puts "L: #{l.strip}" if @debug == 2
+            keys.merge!({linenum => "#{l.strip}"}) unless l.strip == ""
+            puts "Ln: #{linenum} L: #{l.strip}" if @debug >= 2
             linenum = linenum + 1
           }
         }
+        #	pp keys
         return keys
       else
-        return false
+        #return false
+      	return Hash(Int32, String).new
       end
     end
     
@@ -138,28 +141,30 @@ module Icersplicer
 
     def first_load 
       @keys = load_keywords
+#     pp @keys; pp @keys.class
     end
     
     def text_highlighter(text)
-      unless @keys.class == Hash
-        @keys = {0 => "Ln:", 
-                 1 => "SELECT", 
-                 2 => "CREATE TABLE", 
-                 3 => "UPDATE", 
-                 4 => "DELETE", 
-                 5 => "INSERT"}
-      end
+#      unless @keys.class == Hash
+#        @keys = {0 => "Ln:", 
+#                 1 => "SELECT", 
+#                 2 => "CREATE TABLE", 
+#                 3 => "UPDATE", 
+#                 4 => "DELETE", 
+#                 5 => "INSERT"}
+#      end
       cpicker = [2,3,4,1,7,5,6] # Just a selection of colours
+#      pp @keys
       @keys.each {|n, x|
         if x.split("##")[1] == nil
-          text.gsub!("#{x}", "\e[4;3#{cpicker[rand(cpicker.size)]}m#{x}\e[0m\ \e[0;32m")
+          text = text.gsub("#{x}", "\e[4;3#{cpicker[rand(cpicker.size)]}m#{x}\e[0m\ \e[0;32m")
         else
           name = x.split("##")[1].split("=")[1]; puts "Name: #{name}" if @debug == 3
           cnum = COLOURS[name].to_i; puts "Colour Number: #{cnum}" if @debug == 3
           nval = x.split("##")[0]; puts "Value: #{nval}" if @debug == 3
-          text.gsub!("#{nval}", "\e[4;3#{cnum}m#{nval}\e[0m\ \e[0;32m")
+          text = text.gsub("#{nval}", "\e[4;3#{cnum}m#{nval}\e[0m\ \e[0;32m")
         end
-        text.gsub!(" \e[0;32m", "\e[0;32m")
+        text.gsub(" \e[0;32m", "\e[0;32m")
       }
       return text
     end

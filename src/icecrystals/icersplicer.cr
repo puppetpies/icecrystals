@@ -164,7 +164,7 @@ module Icersplicer
           nval = x.split("##")[0]; puts "Value: #{nval}" if @debug == 3
           text = text.gsub("#{nval}", "\e[4;3#{cnum}m#{nval}\e[0m\ \e[0;32m")
         end
-        text.gsub(" \e[0;32m", "\e[0;32m")
+        text = text.gsub(" \e[0;32m", "\e[0;32m")
       }
       return text
     end

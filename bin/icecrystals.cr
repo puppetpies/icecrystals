@@ -61,10 +61,10 @@ oparse = OptionParser.parse! do |parser|
     option_nameval("Filename", f)
   }
 
-#  parser.on("-k keywords.ice", "--keywordsfile=KEYWORDSFILE", "Keywords / Syntax Hightlighting") {|k|
-#    ice.keywordsfile = k
-#    option_nameval("Keywords", k)
-#  }
+  parser.on("-k keywords.ice", "--keywordsfile=KEYWORDSFILE", "\tKeywords / Syntax Hightlighting") {|k|
+    ice.keywordsfile = k
+    option_nameval("Keywords", k)
+  }
   
   parser.on("-g STRING", "--grep=STRING", "Filter string") {|g|
     grep = g
@@ -91,9 +91,9 @@ oparse = OptionParser.parse! do |parser|
     option_nameval("Skiplines", s)
   }
   
-#  parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
-#    ice.nohighlighter = "OFF"
-#  }
+  parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
+    ice.nohighlighter = "OFF"
+  }
 
   parser.on("-o OUTPUTFILE", "--outputfile", "Outputfile") {|o|
     outputfilename = o
@@ -150,7 +150,7 @@ filterlines = 0
                   unless skipblank #and data_orig.strip  == ""
                     if data_orig =~ /#{grep}/
                       filterlines += 1
-                      ice.print_to_screen(linecounter, data, quietmode) unless ice.skip(linecounter)
+                      ice.print_to_screen(linecounter, ice.text_processor(data), quietmode) unless ice.skip(linecounter)
                       unless outputfilename == "DISABLED"
                         #data_orig.gsub!("#{search}", "#{replace}")
                         output = Icersplicer::OutputFile.new
@@ -164,7 +164,7 @@ filterlines = 0
                 unless skipblank # and data_orig.strip == ""
                   if data_orig =~ /#{grep}/
                     filterlines += 1
-                    ice.print_to_screen(linecounter, data, quietmode) unless ice.skip(linecounter)
+                    ice.print_to_screen(linecounter, ice.text_processor(data), quietmode) unless ice.skip(linecounter)
                     unless outputfilename == "DISABLED"
                       #data_orig.gsub!("#{search}", "#{replace}")
                       output = Icersplicer::OutputFile.new

@@ -21,11 +21,13 @@ make install
 Home: /home/brian/.icersplicer
 Usage: icecrystals [options]
     -f INTPUTFILE, --inputfile=INPUTFILE	Input filename
+    -k keywords.ice, --keywordsfile=KEYWORDSFILE	Keywords / Syntax Hightlighting
     -g STRING, --grep=STRING         Filter string
     -l INT, --lineoffset=INT         Offset from the beginning of the file
     -3 INT, --head=INT               From beginning of file number of lines display able
     -4 INT, --tail=INT               lines display able at the end of the file
     -s INT, --skiplines=INT          Line numbers / sequences 3,4,5-10,12
+    -t, --nohighlighter              Turn off highlighter
     -o OUTPUTFILE, --outputfile      Outputfile
     -q, --quiet                      Quiet
     -h, --help                       Show this help

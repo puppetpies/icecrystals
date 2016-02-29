@@ -54,7 +54,7 @@ def option_nameval(var, text)
 end
 
 oparse = OptionParser.parse! do |parser|
-  parser.banner = "Usage: icecrystals [options]"
+  parser.banner = "Usage: icecrystals #{VERSION} [options]"
 
   parser.on("-f INTPUTFILE", "--inputfile=INPUTFILE", "\tInput filename") {|f|
     inputfile = f
@@ -194,4 +194,5 @@ filterlines = 0
 #  timer.watch('stop')
 #  timer.print_stats
 #end
+ice.stats(inputfile, outputfilename)
 ice.reset_screen

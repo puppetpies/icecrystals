@@ -193,7 +193,7 @@ module Icersplicer
 
     def stats(inputfile, outputfile)
       puts "Skip Lines #{@skip_lines}" if @debug >= 1
-      print "Inputfile lines: "
+      print "\nInputfile lines: "
       countlines(inputfile)
     end
 

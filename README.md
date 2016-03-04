@@ -49,7 +49,7 @@ Full stats not let implemented
 
 ````
 
-## Usgae
+## Usage
 
 For keywords file to work put them under you $HOME/.icersplicer folder to specify for paths not required in -k we just look under .icersplicer
 

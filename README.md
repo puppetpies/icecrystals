@@ -51,7 +51,7 @@ Full stats not let implemented
 
 ## Usage
 
-For keywords file to work put them under you $HOME/.icersplicer folder to specify for paths not required in -k we just look under .icersplicer
+For keywords files to work put them under your $HOME/.icersplicer folder you don't have to specify paths not required in -k we just look under .icersplicer
 
 ````
 icecrystals -f mytestfile.rb -k keywords-ruby.ice

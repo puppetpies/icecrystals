@@ -53,6 +53,7 @@ Full stats not let implemented
 
 For keywords file to work put them under you $HOME/.icersplicer folder to specify for paths not required in -k we just look under .icersplicer
 
+````
 icecrystals -f mytestfile.rb -k keywords-ruby.ice
 
 A few examples
@@ -60,6 +61,7 @@ A few examples
 icecrystals -f testfile -c # Countlines
 icecrystals -f testfile --head 30 # Display 30 lines same for tail
 icecrystals -f testfile --skiplines 3,5-9,10 # Skips lines 3 Range 5 to 9 and line 10 # Large line ranges affect performance
+````
 
 ## Contributing
 

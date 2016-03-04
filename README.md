@@ -19,7 +19,7 @@ make install
 
 ````
 Home: /home/brian/.icersplicer
-Usage: icecrystals 3.0.1 [options]
+Usage: icecrystals 3.0.3 [options]
     -f INTPUTFILE, --inputfile=INPUTFILE	Input filename
     -k keywords.ice, --keywordsfile=KEYWORDSFILE	Keywords / Syntax Hightlighting
     -g STRING, --grep=STRING         Filter string

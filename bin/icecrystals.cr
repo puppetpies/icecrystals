@@ -86,6 +86,13 @@ oparse = OptionParser.parse! do |parser|
     option_nameval("Tail / Line Limit", l)
   }
 
+  parser.on("-c", "--countlines", "Counts the lines of a file") {|c|
+    unless inputfile == ""
+      countlines = ice.stats(inputfile, outputfilename)
+      exit
+    end
+  }
+  
   parser.on("-s INT", "--skiplines=INT", "Line numbers / sequences 3,4,5-10,12") {|s|
     ice.skip_lines = ice.skip_processor(s)
     option_nameval("Skiplines", s)
@@ -95,6 +102,10 @@ oparse = OptionParser.parse! do |parser|
     ice.nohighlighter = "OFF"
   }
 
+  parser.on("-7", "--nolinenumbers", "No Line numbers") {|l|
+    ice.nolinenumbers = true
+  }
+  
   parser.on("-o OUTPUTFILE", "--outputfile", "Outputfile") {|o|
     outputfilename = o
   }

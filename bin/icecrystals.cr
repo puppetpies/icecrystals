@@ -98,6 +98,10 @@ oparse = OptionParser.parse! do |parser|
     option_nameval("Skiplines", s)
   }
   
+  parser.on("-b", "--skipblank", "Ommit blank lines") {|b|
+    skipblank = true
+  }
+  
   parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
     ice.nohighlighter = "OFF"
   }
@@ -158,7 +162,7 @@ filterlines = 0
             unless lineoffset > increment_offset
               unless linelimit == 0
                 unless increment_limit > linelimit
-                  unless skipblank #and data_orig.strip  == ""
+                  unless skipblank && data_orig.strip == ""
                     if data_orig =~ /#{grep}/
                       filterlines += 1
                       ice.print_to_screen(linecounter, ice.text_processor(data), quietmode) unless ice.skip(linecounter)
@@ -172,7 +176,7 @@ filterlines = 0
                   end
                 end
               else
-                unless skipblank # and data_orig.strip == ""
+                unless skipblank && data_orig.strip == ""
                   if data_orig =~ /#{grep}/
                     filterlines += 1
                     ice.print_to_screen(linecounter, ice.text_processor(data), quietmode) unless ice.skip(linecounter)

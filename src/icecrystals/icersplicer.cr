@@ -34,6 +34,29 @@ module Icersplicer
     
   end
 
+  class Timers
+    
+    def initialize
+      @a = Time.now
+      @b = Time.now
+      @c = Time.now
+    end
+    
+    def start
+      @a = Time.now
+    end
+    
+    def stop
+      @b = Time.now
+    end
+    
+    def stats
+      @c = @b - @a
+      return "Duration: #{@c.to_s.split(":")[2].to_s[1..7]}{s}"
+    end
+    
+  end
+  
   class FileProcessor
   
     setter nohighlighter 

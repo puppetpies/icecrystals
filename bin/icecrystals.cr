@@ -36,6 +36,7 @@ linecounter = 0
 quietmode = false
 skipblank = false
 grep = "" # Blank as default
+nostats = "NO"
 
 inputfile = ""
 outputfilename = "DISABLED"
@@ -106,6 +107,10 @@ oparse = OptionParser.parse! do |parser|
     ice.nohighlighter = "OFF"
   }
 
+  parser.on("-6", "--nostats", "Don't process statistics before exit") {
+    nostats = "SKIP"
+  }
+  
   parser.on("-7", "--nolinenumbers", "No Line numbers") {|l|
     ice.nolinenumbers = true
   }
@@ -141,7 +146,7 @@ ice.first_load
     end
 #  end
 #}
-
+tm = Icersplicer::Timers.new; tm.start;
 filterlines = 0
 #begin
   # Regular file / glob mask processor
@@ -208,6 +213,11 @@ filterlines = 0
 #  ice.stats(inputfile, outputfile)
 #  timer.watch('stop')
 #  timer.print_stats
-#end
-ice.stats(inputfile, outputfilename)
+#
+unless nostats == "SKIP"
+  ice.stats(inputfile, outputfilename)
+  tm.stop
+  duration = tm.stats
+  puts duration
+end
 ice.reset_screen

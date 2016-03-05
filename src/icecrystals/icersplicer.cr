@@ -52,7 +52,7 @@ module Icersplicer
     
     def stats
       @c = @b - @a
-      return "Duration: #{@c.to_s.split(":")[2].to_s[1..7]}{s}"
+      return "Start: #{@a} Finish: #{@b} Duration: #{@c.to_s.split(":")[2].to_s[1..7]}{s}"
     end
     
   end

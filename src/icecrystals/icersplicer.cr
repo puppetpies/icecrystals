@@ -122,11 +122,9 @@ module Icersplicer
             linenum = linenum + 1
           }
         }
-        #	pp keys
         return keys
       else
-        #return false
-      	return Hash(Int32, String).new
+        return Hash(Int32, String).new
       end
     end
     
@@ -141,20 +139,10 @@ module Icersplicer
 
     def first_load 
       @keys = load_keywords
-#     pp @keys; pp @keys.class
     end
     
     def text_highlighter(text)
-#      unless @keys.class == Hash
-#        @keys = {0 => "Ln:", 
-#                 1 => "SELECT", 
-#                 2 => "CREATE TABLE", 
-#                 3 => "UPDATE", 
-#                 4 => "DELETE", 
-#                 5 => "INSERT"}
-#      end
       cpicker = [2,3,4,1,7,5,6] # Just a selection of colours
-#      pp @keys
       @keys.each {|n, x|
         if x.split("##")[1] == nil
           text = text.gsub("#{x}", "\e[4;3#{cpicker[rand(cpicker.size)]}m#{x}\e[0m\ \e[0;32m")

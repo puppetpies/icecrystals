@@ -218,6 +218,7 @@ unless nostats == "SKIP"
   ice.stats(inputfile, outputfilename)
   tm.stop
   duration = tm.stats
+  puts "\nLines Displayed by Filter: #{filterlines}"
   puts duration
 end
 ice.reset_screen

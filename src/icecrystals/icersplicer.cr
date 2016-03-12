@@ -14,6 +14,8 @@ module Icersplicer
 
   class OutputFile
     
+    property? debug : Int32
+    property? outputfilename : String
     setter outputfilename
     
     def initialize

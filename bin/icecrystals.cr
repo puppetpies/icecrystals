@@ -27,6 +27,7 @@ VERSION = Icersplicer::VERSION::STRING
 
 ice = FileProcessor.new
 ice.home = home
+ice.highlighter = "ON"
 
 lineoffset = 0
 linelimit = 0
@@ -104,7 +105,7 @@ oparse = OptionParser.parse! do |parser|
   }
   
   parser.on("-t", "--nohighlighter", "Turn off highlighter") {|t|
-    ice.nohighlighter = "OFF"
+    ice.highlighter = "OFF"
   }
 
   parser.on("-6", "--nostats", "Don't process statistics before exit") {

@@ -38,23 +38,26 @@ module Icersplicer
 
   class Timers
     
+    property? start : Time
+    property? finish : Time
+    
     def initialize
-      @a = Time.now
-      @b = Time.now
-      @c = Time.now
+      @start = Time.now
+      @finish = Time.now
+      @duration = Time.now
     end
     
     def start
-      @a = Time.now
+      @start = Time.now
     end
     
     def stop
-      @b = Time.now
+      @finish = Time.now
     end
     
     def stats
-      @c = @b - @a
-      return "Start: #{@a} Finish: #{@b} Duration: #{@c.to_s.split(":")[2].to_s[0..7]}{s}"
+      @duration = @finish - @start
+      return "Start: #{@start} Finish: #{@finish} Duration: #{@duration.to_s.split(":")[2].to_s[0..7]}{s}"
     end
     
   end

@@ -64,7 +64,13 @@ module Icersplicer
   
   class FileProcessor
   
-    setter nohighlighter 
+    property? highlighter : String
+    property? keywordsfile : String
+    property? debug : Int32
+    property? nolinenumbers : Bool
+    property? home : String
+    
+    setter highlighter 
     setter skip_lines
     setter keywordsfile 
     setter debug
@@ -81,6 +87,7 @@ module Icersplicer
                "white" => 7}
 
     def initialize
+      @highlighter = "OFF"
       @keywordsfile = "keywords.ice"
       @debug = 0
       @nolinenumbers = false
@@ -157,7 +164,7 @@ module Icersplicer
     end
     
     def text_processor(data)
-      unless @nohighlighter == "OFF"
+      unless @highlighter == "OFF"
         data = text_highlighter(data)
         return data
       else

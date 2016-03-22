@@ -12,3 +12,6 @@ PREFIX ?= /usr/local
 install: icecrystals
 	install -d $(PREFIX)/bin
 	install bin/icecrystals $(PREFIX)/bin
+	install examples/keywords.ice ~/.icersplicer
+	install examples/keywords-ruby.ice ~/.icersplicer
+

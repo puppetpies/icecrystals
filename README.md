@@ -49,7 +49,6 @@ Homepage: https://github.com/puppetpies/icecrystals
 Most features Icersplicer are now functional.
 
 Followtail not implemented
-Full stats not let implemented
 
 ````
 

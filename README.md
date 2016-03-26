@@ -6,7 +6,7 @@ There is a more extensive Ruby version @ http://github.com/puppetpies/icersplice
 
 Youtube
  
-{![Icecrystals Demo](https://github.com/puppetpies/icecrystals/blob/f10f99b743db43955d8beeafecc11ea84623cf13/Screenshot.png)](https://www.youtube.com/watch?v=ozboFecEkwY "Icecrystals Demo")
+[![Icecrystals Demo](https://github.com/puppetpies/icecrystals/blob/f10f99b743db43955d8beeafecc11ea84623cf13/Screenshot.png)](https://www.youtube.com/watch?v=ozboFecEkwY)
 
 ## Installation
 

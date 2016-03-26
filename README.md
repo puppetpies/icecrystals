@@ -10,7 +10,7 @@ Youtube
 
 ## Installation
 
-You need Crystal 0.11 / 0.12 installed over later works with latest 0.14 release
+You need Crystal 0.11 / 0.12 installed or later works with latest 0.14 release
 
 You can build icecrystals with
 

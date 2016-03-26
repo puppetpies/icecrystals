@@ -4,6 +4,8 @@ Icecrystals - Icersplicer written in Crystal for performance benefits of compile
 
 There is a more extensive Ruby version @ http://github.com/puppetpies/icersplicer
 
+Youtube demo - https://www.youtube.com/watch?v=ozboFecEkwY
+
 ## Installation
 
 You need Crystal 0.11 / 0.12 installed

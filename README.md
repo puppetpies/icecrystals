@@ -1,4 +1,4 @@
-# icecrystals - Experimental
+# icecrystals - RC1
 
 Icecrystals - Icersplicer written in Crystal for performance benefits of compiled code.
 
@@ -81,5 +81,3 @@ icecrystals -f testfile --skiplines 3,5-9,10 # Skips lines 3 Range 5 to 9 and li
 ## Contributors
 
 - [puppetpies]](https://github.com/puppetpies) Bri in The Sky - creator, maintainer
-
-# icecrystals

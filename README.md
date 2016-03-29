@@ -8,6 +8,8 @@ Youtube
  
 [![Icecrystals Demo](https://github.com/puppetpies/icecrystals/blob/f10f99b743db43955d8beeafecc11ea84623cf13/Screenshot.png)](https://www.youtube.com/watch?v=ozboFecEkwY)
 
+![Icersplicer Nova](https://raw.githubusercontent.com/puppetpies/icecrystals/master/hightlight_sample.png)
+
 ## Installation
 
 You need Crystal 0.11 / 0.12 installed or later works with latest 0.14 release

@@ -44,7 +44,6 @@ module Icersplicer
     def initialize
       @start = Time.now
       @finish = Time.now
-      @duration = Time.now
     end
     
     def start
@@ -56,8 +55,8 @@ module Icersplicer
     end
     
     def stats
-      @duration = @finish - @start
-      return "Start: #{@start} Finish: #{@finish} Duration: #{@duration.to_s}"
+      duration = @finish - @start
+      return "Start: #{@start} Finish: #{@finish} Duration: #{duration.to_s}"
     end
     
   end

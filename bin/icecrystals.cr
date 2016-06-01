@@ -134,25 +134,19 @@ oparse = OptionParser.parse! do |parser|
   }
   
   parser.unknown_args {|u|
-    inputfile = u[0]
+    begin
+      inputfile = u[0] unless inputfile.size > 0
+    rescue
+      puts "Take a look at the help -h\n"
+      puts "Please specify inputfile exiting..."
+      exit
+    end
   }
 
 end
 oparse.parse!
-if inputfile == ""
-  puts "Please specify an inputfile with -f"
-  exit
-end
-ice.first_load
 
-#inputfile.split(",").each {|f|
-#  unless f =~ FILE_EXT_REGEXP
-    unless File.exists?("#{inputfile}")
-      raise FileError.new "Input filename #{inputfile} / location doesn't exist... ?"
-      exit
-    end
-#  end
-#}
+ice.first_load
 tm = Icersplicer::Timers.new; tm.start;
 filterlines = 0
 #begin

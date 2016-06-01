@@ -20,6 +20,8 @@ require "../src/icecrystals"
 include GlobUtils 
 include Icersplicer
 
+class FileError < Exception; end
+
 home = "#{ENV["HOME"]}/.icersplicer"
 puts "Home: #{home}"
 file = "keywords.ice"
@@ -130,6 +132,10 @@ oparse = OptionParser.parse! do |parser|
     print_stamp
     exit 0
   }
+  
+  parser.unknown_args {|u|
+    inputfile = u[0]
+  }
 
 end
 oparse.parse!
@@ -142,7 +148,7 @@ ice.first_load
 #inputfile.split(",").each {|f|
 #  unless f =~ FILE_EXT_REGEXP
     unless File.exists?("#{inputfile}")
-      raise "Input filename #{inputfile} / location doesn't exist... ?"
+      raise FileError.new "Input filename #{inputfile} / location doesn't exist... ?"
       exit
     end
 #  end

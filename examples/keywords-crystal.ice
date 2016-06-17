@@ -6,6 +6,7 @@ UInt64##colour=blue
 UInt32##colour=blue
 UInt16##colour=blue
 UInt8##colour=blue
+Array##colour=blue
 String##colour=blue
 Float64##colour=blue
 Pointer##colour=blue

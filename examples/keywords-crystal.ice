@@ -19,6 +19,7 @@ Record##colour=blue
 );##colour=cyan
 true##colour=blue
 false##colour=yellow
+macro##colour=yellow
 def##colour=yellow
 module##colour=yellow
 end##colour=yellow

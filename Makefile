@@ -1,7 +1,7 @@
 all: icecrystals
 
 icecrystals: 
-	crystal build --release bin/icecrystals.cr -o bin/icecrystals
+	crystal compile --release bin/icecrystals.cr -o bin/icecrystals
 	@du -sh bin/icecrystals
 
 clean:

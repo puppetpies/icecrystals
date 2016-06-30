@@ -14,4 +14,5 @@ install: icecrystals
 	install bin/icecrystals $(PREFIX)/bin
 	install examples/keywords.ice ~/.icersplicer
 	install examples/keywords-ruby.ice ~/.icersplicer
-
+	install examples/keywords-crystal.ice ~/.icersplicer
+	install examples/keywords-sql.ice ~/.icersplicer

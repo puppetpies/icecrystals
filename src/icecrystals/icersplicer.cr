@@ -85,6 +85,8 @@ module Icersplicer
                "cyan" => 6,
                "white" => 7}
 
+    KEYWORD_DELIMITER = ","
+    
     def initialize
       @highlighter = "OFF"
       @keywordsfile = "keywords.ice"
@@ -178,13 +180,21 @@ module Icersplicer
     def text_highlighter(text)
       cpicker = [2,3,4,1,7,5,6] # Just a selection of colours
       @keys.each {|n, x|
-        if x.split("##")[1] == nil
-          text = text.gsub("#{x}", "\e[4;3#{cpicker[rand(cpicker.size)]}m#{x}\e[0m\ \e[0;32m")
+        if x.split(KEYWORD_DELIMITER)[1] == nil
+          begin
+            text = text.gsub("#{x}", "\e[4;3#{cpicker[rand(cpicker.size)]}m#{x}\e[0m\ \e[0;32m")
+          rescue
+            raise "Error in random #{x}"
+          end
         else
-          name = x.split("##")[1].split("=")[1]; puts "Name: #{name}" if @debug == 3
-          cnum = COLOURS[name].to_i; puts "Colour Number: #{cnum}" if @debug == 3
-          nval = x.split("##")[0]; puts "Value: #{nval}" if @debug == 3
-          text = text.gsub("#{nval}", "\e[4;3#{cnum}m#{nval}\e[0m\ \e[0;32m")
+          begin
+            name = x.split(KEYWORD_DELIMITER)[1].split("=")[1]; puts "Name: #{name}" if @debug == 3
+            cnum = COLOURS[name].to_i; puts "Colour Number: #{cnum}" if @debug == 3
+            nval = x.split(KEYWORD_DELIMITER)[0]; puts "Value: #{nval}" if @debug == 3
+            text = text.gsub("#{nval}", "\e[4;3#{cnum}m#{nval}\e[0m\ \e[0;32m")
+          rescue
+            raise "Error in numbered colour Name: #{name} Number: #{cnum}"
+          end
         end
         text = text.gsub(" \e[0;32m", "\e[0;32m")
       }

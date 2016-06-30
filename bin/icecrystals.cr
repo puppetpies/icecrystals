@@ -26,6 +26,7 @@ home = "#{ENV["HOME"]}/.icersplicer"
 puts "Home: #{home}"
 file = "keywords.ice"
 VERSION = Icersplicer::VERSION::STRING
+CODENAME = Icersplicer::VERSION::CODENAME
 
 ice = FileProcessor.new
 ice.home = home
@@ -58,7 +59,7 @@ def option_nameval(var, text)
 end
 
 oparse = OptionParser.parse! do |parser|
-  parser.banner = "Usage: icecrystals #{VERSION} [options]"
+  parser.banner = "Usage: icecrystals #{VERSION} (#{CODENAME}) [options]"
 
   parser.on("-f INTPUTFILE", "--inputfile=INPUTFILE", "\tInput filename") {|f|
     inputfile = f

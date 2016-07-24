@@ -54,7 +54,7 @@ module Icersplicer
       @finish = Time.now
     end
     
-    def stats
+    def stats : String
       duration = @finish - @start
       return "Start: #{@start} Finish: #{@finish} Duration: #{duration.to_s}"
     end
@@ -97,7 +97,7 @@ module Icersplicer
       @home = ""
     end
 
-    def skip_processor(filter)
+    def skip_processor(filter) : Hash
       skip_lines = Hash(Int32, Int32).new
       skipcounter, comb = 0, 0
       puts "Filter: #{filter}"
@@ -119,7 +119,7 @@ module Icersplicer
       return skip_lines
     end
   
-    def skip(line)
+    def skip(line) : Bool | Nil
       begin
         line_element = @skip_lines.key(line)
         puts "Line Element: #{line_element}" if @debug == 3
@@ -135,15 +135,15 @@ module Icersplicer
       return skiper
     end
 
-    def reset_screen
+    def reset_screen : Nil
       puts "\e[0m\ "
     end
     
-    def filterlinestats(filterlines)
+    def filterlinestats(filterlines) : Nil
       puts "\nLines Displayed by Filter: #{filterlines}"
     end
 
-    def load_keywords
+    def load_keywords : Hash
       keys = Hash(Int32, String).new
       linenum = 0
       unless Dir.exists?("#{@home}")
@@ -164,7 +164,7 @@ module Icersplicer
       end
     end
     
-    def text_processor(data)
+    def text_processor(data) : String
       unless @highlighter == "OFF"
         data = text_highlighter(data)
         return data
@@ -173,11 +173,11 @@ module Icersplicer
       end
     end
 
-    def first_load 
+    def first_load : Hash
       @keys = load_keywords
     end
     
-    def text_highlighter(text)
+    def text_highlighter(text) : String
       cpicker = [2,3,4,1,7,5,6] # Just a selection of colours
       @keys.each {|n, x|
         if x.split(KEYWORD_DELIMITER)[1] == nil
@@ -201,7 +201,7 @@ module Icersplicer
       return text
     end
 
-    def countlines(inputfile)
+    def countlines(inputfile) : Number
       lines = 0
       unless inputfile == nil
         if File.exists?(inputfile)
@@ -216,14 +216,14 @@ module Icersplicer
       return lines
     end
     
-    def print_to_screen(linenum, text, quiet)
+    def print_to_screen(linenum, text, quiet) : Nil
       unless @nolinenumbers == true
         print "\e[1;33mLn: #{linenum}:\e[0m\ " unless quiet == true
       end
       print "#{text}" unless quiet == true
     end
 
-    def stats(inputfile, outputfile)
+    def stats(inputfile, outputfile) : Number
       puts "Skip Lines #{@skip_lines}" if @debug >= 1
       print "\nInputfile lines: "
       countlines(inputfile)

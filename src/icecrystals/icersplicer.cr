@@ -206,9 +206,7 @@ module Icersplicer
       unless inputfile == nil
         if File.exists?(inputfile)
           File.open(inputfile) {|n|
-            n.each_line {
-              lines += 1
-            }
+            lines = n.each_line.size
           }
           puts "Filename: #{inputfile} Total Line Count: #{lines}"
         end
